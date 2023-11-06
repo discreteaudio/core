@@ -42,6 +42,7 @@ from .mixins import (
     MqttAvailability,
     MqttEntity,
     async_setup_entity_entry_helper,
+    validate_sensor_entity_category,
     write_state_on_attr_change,
 )
 from .models import MqttValueTemplate, ReceiveMessage
@@ -69,10 +70,12 @@ _PLATFORM_SCHEMA_BASE = MQTT_RO_SCHEMA.extend(
 
 DISCOVERY_SCHEMA = vol.All(
     _PLATFORM_SCHEMA_BASE.extend({}, extra=vol.REMOVE_EXTRA),
+    validate_sensor_entity_category(binary_sensor.DOMAIN, discovery=False),
 )
 
 PLATFORM_SCHEMA_MODERN = vol.All(
     _PLATFORM_SCHEMA_BASE,
+    validate_sensor_entity_category(binary_sensor.DOMAIN, discovery=False),
 )
 
 
