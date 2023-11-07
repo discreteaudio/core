@@ -11,6 +11,10 @@
       "connectable": false
     },
     {
+      "local_name": "INT*",
+      "connectable": false
+    },
+    {
       "local_name": "iBBQ*",
       "connectable": false
     },
